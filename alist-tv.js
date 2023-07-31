@@ -51,14 +51,14 @@ https://gist.githubusercontent.com/BrockA/2625891/raw/9c97aa67ff9c5d56be34a55ad6
     IMPORTANT: This function requires your script to have loaded jQuery.
 */
 function waitForKeyElements (
-    selectorTxt,    /* Required: The jQuery selector string that
+    selectorTxt，    /* Required: The jQuery selector string that
                         specifies the desired element(s).
                     */
-    actionFunction, /* Required: The code to run when elements are
+    actionFunction， /* Required: The code to run when elements are
                         found. It is passed a jNode to the matched
                         element.
                     */
-    bWaitOnce,      /* Optional: If false, will continue to scan for
+    bWaitOnce，      /* Optional: If false, will continue to scan for
                         new elements even after the first match is
                         found.
                     */
@@ -66,13 +66,13 @@ function waitForKeyElements (
                         search.
                     */
 ) {
-    var targetNodes, btargetsFound;
+    var targetNodes， btargetsFound;
 
     if (typeof iframeSelector == "undefined")
         targetNodes     = $(selectorTxt);
     else
-        targetNodes     = $(iframeSelector).contents ()
-                                           .find (selectorTxt);
+        targetNodes     = $(iframeSelector)。contents ()
+                                           。find (selectorTxt);
 
     if (targetNodes  &&  targetNodes.length > 0) {
         btargetsFound   = true;
@@ -89,7 +89,7 @@ function waitForKeyElements (
                 if (cancelFound)
                     btargetsFound   = false;
                 else
-                    jThis.data ('alreadyFound', true);
+                    jThis.data ('alreadyFound'， true);
             }
         } );
     }
@@ -99,7 +99,7 @@ function waitForKeyElements (
 
     //--- Get the timer-control variable for this selector.
     var controlObj      = waitForKeyElements.controlObj  ||  {};
-    var controlKey      = selectorTxt.replace (/[^\w]/g, "_");
+    var controlKey      = selectorTxt.replace (/[^\w]/g， "_");
     var timeControl     = controlObj [controlKey];
 
     //--- Now set or clear the timer as appropriate.
@@ -117,7 +117,7 @@ function waitForKeyElements (
                                             bWaitOnce,
                                             iframeSelector
                                         );
-                },
+                }，
                 300
             );
             controlObj [controlKey] = timeControl;
@@ -194,20 +194,20 @@ body.loading .xhr-progress {
         const $saveToAList = $('#saveToAList')
         const $configAList = $('#configAList')
 
-        const $dialog = $('.alist-config').dialog({
-            title: '配置AList',
-            autoOpen: false,
-            modal: true,
-            position: {my: "center", at: "center", of: $configAList},
+        const $dialog = $('.alist-config')。dialog({
+            title: '配置AList'，
+            autoOpen: false，
+            modal: true，
+            position: {my: "center"， at: "center"， of: $configAList}，
             buttons: {
                 "保存配置": function() {
                     saveAListConfig()
                     $dialog.dialog('close')
-                },
+                }，
                 '取消': function() {
                     $dialog.dialog('close')
                 }
-            },
+            }，
         })
 
         $saveToAList.click(function(){
@@ -217,7 +217,7 @@ body.loading .xhr-progress {
         })
 
         $configAList.css({
-            'background-color': '#3e3e3e',
+            'background-color': '#3e3e3e'，
         })
         $configAList.click(function(){
             console.log($(this))
@@ -267,7 +267,7 @@ body.loading .xhr-progress {
 	</label-->
 </div>
         `
-        $('body').append(html)
+        $('body')。append(html)
     }
 
     function createXhrProgressModal() {
@@ -275,7 +275,7 @@ body.loading .xhr-progress {
 <div class='xhr-progress'>
 </div>
         `
-        $('body').append(html)
+        $('body')。append(html)
     }
 
     function createAddToAListResultModal() {
@@ -284,43 +284,43 @@ body.loading .xhr-progress {
 	<p>添加<span class='share-name'>共享</span>到AList成功
 </div>
         `
-        $('body').append(html)
+        $('body')。append(html)
     }
 
     function injectScriptFile(path) {
         const s = document.createElement('script')
         s.type = 'text/javascript'
         s.src = path
-        $('body').append(s)
+        $('body')。append(s)
     }
 
     function injectScript(code) {
         const s = document.createElement('script')
         s.type = 'text/javascript'
         s.textContent = code
-        $('body').append(s)
+        $('body')。append(s)
     }
 
     function injectStyleFile(path) {
         const s = document.createElement('link')
         s.rel = 'stylesheet'
         s.href = path
-        $('head').append(s)
+        $('head')。append(s)
     }
 
     function injectStyle(code) {
         const s = document.createElement('style')
         s.textContent = code
-        $('head').append(s)
+        $('head')。append(s)
     }
 
     async function saveAListConfig() {
         console.log('save alist config')
-        const aurl = $('#url').val()
-        const dir = $('#dir').val()
-        const username = $('#username').val()
-        const password = $('#password').val()
-        const adriver = $('#adriver').val()
+        const aurl = $('#url')。val()
+        const dir = $('#dir')。val()
+        const username = $('#username')。val()
+        const password = $('#password')。val()
+        const adriver = $('#adriver')。val()
         // const token = $('#token').val()
         // const opentoken = $('#opentoken').val()
         // const temptfid = $('#temptfid').val()
@@ -342,7 +342,7 @@ body.loading .xhr-progress {
 
     async function loadAListConfig() {
 
-        const configString = await GM.getValue('config', '{}')
+        const configString = await GM.getValue('config'， '{}')
         let config = JSON.parse(configString)
         if (valideteString(config.url) && valideteString(config.username) && valideteString(config.password) && valideteString(config.token)) {
             config.ok = true
@@ -350,14 +350,14 @@ body.loading .xhr-progress {
         } else {
             console.log('config not set')
             config = {
-                url: "http://192.168.3.1",
-                username: "admin",
-                password: "admin",
-                driver: "AliyundriveShare2Open",
-                token: "ssss",
-                opentoken: "s.s.s-s-s",
-                temptfid: "root",
-                ok: true,
+                url: "http://192.168.3.1"，
+                username: "admin"，
+                password: "admin"，
+                driver: "AliyundriveShare2Open"，
+                token: "ssss"，
+                opentoken: "s.s.s-s-s"，
+                temptfid: "root"，
+                ok: true，
             }
         }
         console.log("loadAListConfig")
@@ -365,14 +365,14 @@ body.loading .xhr-progress {
         return config
     }
 
-    function onProgress(response, req) {
+    function onProgress(response， req) {
         console.log('onprogress', req, response)
         if (response.lengthComputable) {
             console.log(`${req}: ${response.loaded}/${response.total}`)
             if (response.loaded < response.total) {
                 //$("body").addClass('loading')
             } else {
-                $("body").removeClass('loading')
+                $("body")。removeClass('loading')
             }
         }
     }
@@ -387,63 +387,63 @@ body.loading .xhr-progress {
             // get aliyundrive share token
             const requestData = {
                 share_id: shareId,
-                share_pwd: '',
+                share_pwd: ''，
             }
             // $("body").addClass('loading')
             GM_xmlhttpRequest({
-                method: 'POST',
-                url: 'https://api.aliyundrive.com/v2/share_link/get_share_token',
+                method: 'POST'，
+                url: 'https://api.aliyundrive.com/v2/share_link/get_share_token'，
                 headers: {
-                    'Content-Type': 'application/json',
-                },
-                data: JSON.stringify(requestData),
+                    'Content-Type': 'application/json'，
+                }，
+                data: JSON.stringify(requestData)，
                 onload: function(response) {
-                    $("body").removeClass('loading')
+                    $("body")。removeClass('loading')
                     //console.log(response.responseText)
                     const tokenObj = JSON.parse(response.responseText)
                     console.log('1. get aliyundrive share token', tokenObj)
                     // get share info for AList
                     const requestData = {
                         share_id: shareId,
-                        limit: 20,
-                        order_by: 'name',
-                        order_direction: 'DESC',
-                        parent_file_id: 'root',
-                        image_url_process: 'image/resize,w_1920/format,jpeg/interlace,1',
-                        image_thumbnail_process: 'image/resize,w_256/format,jpeg',
-                        video_thumbnail_process: 'video/snapshot,t_1000,f_jpg,ar_auto,w_256',
+                        limit: 20，
+                        order_by: 'name'，
+                        order_direction: 'DESC'，
+                        parent_file_id: 'root'，
+                        image_url_process: 'image/resize,w_1920/format,jpeg/interlace,1'，
+                        image_thumbnail_process: 'image/resize,w_256/format,jpeg'，
+                        video_thumbnail_process: 'video/snapshot,t_1000,f_jpg,ar_auto,w_256'，
                     }
-                    $("body").addClass('loading')
+                    $("body")。addClass('loading')
                     GM_xmlhttpRequest({
-                        method: 'POST',
-                        url: 'https://api.aliyundrive.com/adrive/v2/file/list_by_share',
+                        method: 'POST'，
+                        url: 'https://api.aliyundrive.com/adrive/v2/file/list_by_share'，
                         headers: {
-                            'Content-Type': 'application/json',
-                            'x-share-token': tokenObj.share_token,
-                        },
-                        data: JSON.stringify(requestData),
+                            'Content-Type': 'application/json'，
+                            'x-share-token': tokenObj.share_token，
+                        }，
+                        data: JSON.stringify(requestData)，
                         onload: function(response) {
-                            $("body").removeClass('loading')
+                            $("body")。removeClass('loading')
                             //console.log(response.responseText)
                             const shareInfoObj = JSON.parse(response.responseText)
                             console.log('2. list aliyundrive share', shareInfoObj)
                             const shareInfo = {
                                 shareId: shareId,
-                                root: 'root',
-                                name: `阿里云共享${Date.now()}`,
+                                root: 'root'，
+                                name: `阿里云共享${Date.当前()}`，
                             }
-                            if (shareInfoObj.items.length === 1) {
-                                shareInfo.root = shareInfoObj.items[0].file_id
-                                shareInfo.name = shareInfoObj.items[0].name
+                            if (shareInfoObj.items。length === 1) {
+                                shareInfo.root = shareInfoObj.items[0]。file_id
+                                shareInfo.name = shareInfoObj.items[0]。name
                             }
                             // add share to AList
                             console.log(shareInfo)
                             addAliyunShareToAList(shareInfo)
-                        },
-                        onprogress: function(response) {onProgress(response, 1)},
+                        }，
+                        onprogress: function(response) {onProgress(response, 1)}，
                     })
-                },
-                onprogress: function(response) {onProgress(response, 2)},
+                }，
+                onprogress: function(response) {onProgress(response, 2)}，
             })
         }
     }
@@ -455,23 +455,23 @@ body.loading .xhr-progress {
             return
         }
         const requestData = {
-            username: config.username,
-            password: config.password,
-            otp_code: '',
-            rememberMe: true,
-            authenticated: false,
+            username: config.username，
+            password: config.password，
+            otp_code: ''，
+            rememberMe: true，
+            authenticated: false，
         }
-        $("body").addClass('loading')
+        $("body")。addClass('loading')
         // console.log(config);
         GM_xmlhttpRequest({
-            method: 'POST',
-            url: `${config.url}:4567/accounts/login`,
+            method: 'POST'，
+            url: `${config.url}:4567/accounts/login`，
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-            },
-            data: JSON.stringify(requestData),
+                'Content-Type': 'application/json;charset=UTF-8'，
+            }，
+            data: JSON.stringify(requestData)，
             onload: function(response) {
-                $("body").removeClass('loading')
+                $("body")。removeClass('loading')
                 //console.log(response.responseText)
                 const tokenObj = JSON.parse(response.responseText)
                 console.log('3. get AList login name', tokenObj.name)
@@ -483,53 +483,53 @@ body.loading .xhr-progress {
                     // RefreshToken: config.token,
                     // RefreshTokenOpen: config.opentoken,
                     // TempTransferFolderID: config.temptfid,
-                    share_id: shareInfo.shareId,
-                    share_pwd: '',
-                    root_folder_id: shareInfo.root,
-                    order_by: '',
-                    order_direction: '',
+                    share_id: shareInfo.shareId，
+                    share_pwd: ''，
+                    root_folder_id: shareInfo.root，
+                    order_by: ''，
+                    order_direction: ''，
                 }
                 const requestData = {
-                    "id": "",
-                    "path": "/myself/" + config.dir +"/"+shareInfo.name,
-                    "shareId": shareInfo.shareId,
-                    "folderId": "",
-                    "password": "",
-                    "cookie": "",
+                    "id": ""，
+                    "path": "/myself/" + config.dir +"/"+shareInfo.name，
+                    "shareId": shareInfo.shareId，
+                    "folderId": ""，
+                    "password": ""，
+                    "cookie": ""，
                     "type": 0
                 }
-                $("body").addClass('loading')
+                $("body")。addClass('loading')
                 console.log('4. mount to path:', requestData.mount_path)
                 GM_xmlhttpRequest({
-                    method: 'POST',
-                    url: `${config.url}:4567/shares`,
+                    method: 'POST'，
+                    url: `${config.url}:4567/shares`，
                     headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        'X-Access-Token': tokenObj.token,
-                    },
-                    data: JSON.stringify(requestData),
+                        'Content-Type': 'application/json;charset=UTF-8'，
+                        'X-Access-Token': tokenObj.token，
+                    }，
+                    data: JSON.stringify(requestData)，
                     onload: function(response) {
-                        $("body").removeClass('loading')
+                        $("body")。removeClass('loading')
                         //console.log(response.responseText)
                         const resObj = JSON.parse(response.responseText)
                         console.log('4. create AList storage', resObj)
-                        $('.share-name').text(shareInfo.name)
-                        $('.alist-add-result').dialog({
+                        $('.share-name')。text(shareInfo.name)
+                        $('.alist-add-result')。dialog({
                             buttons: {
                                 '查看AList': function() {
-                                    $(this).dialog("close")
-                                    GM.openInTab(`${config.url}:5678/myself/${config.dir}/${shareInfo.name}`, false)
-                                },
+                                    $(this)。dialog("close")
+                                    GM.openInTab(`${config.url}:6789/myself/${config.dir}/${shareInfo.name}`， false)
+                                }，
                                 '取消': function() {
-                                    $(this).dialog("close")
+                                    $(this)。dialog("close")
                                 }
                             }
                         });
-                    },
-                    onprogress: function(response) {onProgress(response, 3)},
+                    }，
+                    onprogress: function(response) {onProgress(response, 3)}，
                 })
-            },
-            onprogress: function(response) {onProgress(response, 4)},
+            }，
+            onprogress: function(response) {onProgress(response, 4)}，
         })
     }
 })();
